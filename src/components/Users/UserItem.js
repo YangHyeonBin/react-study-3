@@ -5,7 +5,7 @@ import styles from './UserItem.module.css';
 const UserItem = props => {
 
   return (
-    <li>
+    <li className={styles.li}>
       {props.children}
     </li>
   )

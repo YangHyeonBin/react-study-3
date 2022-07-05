@@ -6,7 +6,7 @@ import styles from './UserList.module.css';
 const UserList = props => {
   
   return (
-    <ul>
+    <ul className={styles.ul}>
       {props.items.map(userInfo => (
         <UserItem
           key={userInfo.id}

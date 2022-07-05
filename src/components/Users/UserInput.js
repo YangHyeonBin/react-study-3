@@ -43,7 +43,6 @@ const UserInput = props => {
       return;
     }
     props.onAddUser(enteredValue);
-    console.log(enteredValue);
     setEnteredValue({userName:'', userAge:''}) // 제출 시 입력창 초기화, 아래 value에 이거 전달
   };
 
@@ -53,23 +52,36 @@ const UserInput = props => {
   };
 
   return (
-    <form onSubmit={formSubmitHandler}>
-      <div>
-        <label>User name</label>
-        <input type="text" onChange={userNameInputChangeHandler} value={enteredValue.userName}/>
-      </div>
-      <div>
-        <label>Age &#40;Years&#41;</label>
-        <input type="number" onChange={userAgeInputChangeHandler} value={enteredValue.userAge} />
-      </div>
-      <Button type="submit">Add User</Button>
-      <WarningModal warningMessage='Invalid input' className={`${styles.warning} ${hasValue && styles.valid}`} onButtonClick={modalHandler}>
-        Please enter a valid name and age &#40;non-empty values&#41;.
-      </WarningModal>
-      <WarningModal warningMessage='Invalid input' className={`${styles.warning} ${isValid && styles.valid}`} onButtonClick={modalHandler}>
-        Please enter a valid age &#40;&gt; 0&#41;.
-      </WarningModal>
-    </form>
+    <div>
+      <form onSubmit={formSubmitHandler} className={styles.form}>
+        <div>
+          <label>User name</label>
+          <input
+            type="text" 
+            onChange={userNameInputChangeHandler} value={enteredValue.userName} />
+        </div>
+        <div>
+          <label>Age &#40;Years&#41;</label>
+          <input 
+            type="number" 
+            onChange={userAgeInputChangeHandler} 
+            value={enteredValue.userAge} />
+        </div>
+        <Button type="submit" className=''>Add User</Button>
+      </form>
+      <WarningModal 
+          warningMessage='Invalid input' 
+          className={`${hasValue && styles.valid}`} 
+          onButtonClick={modalHandler}>
+          Please enter a valid name and age &#40;non-empty values&#41;.
+        </WarningModal>
+        <WarningModal 
+          warningMessage='Invalid input' 
+          className={`${styles.warning} ${isValid && styles.valid}`} 
+          onButtonClick={modalHandler}>
+          Please enter a valid age &#40;&gt; 0&#41;.
+        </WarningModal>
+    </div>
   )
 };
 

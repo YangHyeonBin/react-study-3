@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import UserInput from './components/Users/UserInput';
 import UserList from './components/Users/UserList';
 
-import './App.css';
+import styles from './App.module.css';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -16,7 +16,6 @@ function App() {
         userAge: enteredUserInfo.userAge,
         id: Math.random().toString()
       });
-      console.log(updatedUsers);
       return updatedUsers;
     });
   }
@@ -29,10 +28,10 @@ function App() {
 
   return (
     <div>
-      <section id="user-form">
+      <section className={styles.userForm}>
         <UserInput onAddUser={addUserHandler} />
       </section>
-      <section id="users">{content}</section>
+      <section className={`${styles.users} ${content ? styles.show : ''}`}>{content}</section>
     </div>
   );
 };
