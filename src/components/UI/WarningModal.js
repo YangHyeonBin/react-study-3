@@ -4,12 +4,14 @@ import Button from './Button';
 import styles from './WarningModal.module.css';
 
 const WarningModal = props => {
-  const okButtonClickHandler = () => {
+  const classes = 'modal ' + props.className;
 
+  const okButtonClickHandler = () => {
+    props.onButtonClick();
   };
 
   return (
-    <section>
+    <section className={classes}>
       <h1>{props.warningMessage}</h1>
       <p>{props.children}</p>
       <Button type="button" onClick={okButtonClickHandler}>Okay</Button>

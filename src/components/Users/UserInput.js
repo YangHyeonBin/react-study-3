@@ -47,6 +47,11 @@ const UserInput = props => {
     setEnteredValue({userName:'', userAge:''}) // 제출 시 입력창 초기화, 아래 value에 이거 전달
   };
 
+  const modalHandler = () => {
+    setHasValue(true);
+    setIsValid(true);
+  };
+
   return (
     <form onSubmit={formSubmitHandler}>
       <div>
@@ -58,10 +63,10 @@ const UserInput = props => {
         <input type="number" onChange={userAgeInputChangeHandler} value={enteredValue.userAge} />
       </div>
       <Button type="submit">Add User</Button>
-      <WarningModal warningMessage='Invalid input' className="hasValue">
+      <WarningModal warningMessage='Invalid input' className={`${styles.warning} ${hasValue && styles.valid}`} onButtonClick={modalHandler}>
         Please enter a valid name and age &#40;non-empty values&#41;.
       </WarningModal>
-      <WarningModal warningMessage='Invalid input' className="isValid">
+      <WarningModal warningMessage='Invalid input' className={`${styles.warning} ${isValid && styles.valid}`} onButtonClick={modalHandler}>
         Please enter a valid age &#40;&gt; 0&#41;.
       </WarningModal>
     </form>
