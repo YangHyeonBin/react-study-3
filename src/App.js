@@ -23,7 +23,7 @@ function App() {
   let content;
 
   if (users.length > 0) {
-    content = <UserList items={users} />
+    content = <UserList users={users} />
   }
 
   return (

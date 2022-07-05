@@ -25,7 +25,7 @@ const UserInput = props => {
     if (e.target.value.trim().length > 0) {
       setHasValue(true);
     }
-    if (e.target.value >= '0') {
+    if (+e.target.value >= 0) {
       setIsValid(true);
     }
     (enteredValue.userName !== '') ? setEnteredValue({userName: enteredValue.userName, userAge: e.target.value}) : console.log('냠')
@@ -37,7 +37,7 @@ const UserInput = props => {
       setHasValue(false);
       return;
     }
-    if (enteredValue.userAge < 0) {
+    if (+enteredValue.userAge < 0) {
       setIsValid(false);
       setEnteredValue({userName:'', userAge:''});
       return;
@@ -74,13 +74,13 @@ const UserInput = props => {
           className={`${hasValue && styles.valid}`} 
           onButtonClick={modalHandler}>
           Please enter a valid name and age &#40;non-empty values&#41;.
-        </WarningModal>
-        <WarningModal 
-          warningMessage='Invalid input' 
-          className={`${styles.warning} ${isValid && styles.valid}`} 
-          onButtonClick={modalHandler}>
-          Please enter a valid age &#40;&gt; 0&#41;.
-        </WarningModal>
+      </WarningModal>
+      <WarningModal 
+        warningMessage='Invalid input' 
+        className={`${styles.warning} ${isValid && styles.valid}`} 
+        onButtonClick={modalHandler}>
+        Please enter a valid age &#40;&gt; 0&#41;.
+      </WarningModal>
     </div>
   )
 };
