@@ -6,7 +6,7 @@ const Button = props => {
   // const classes = 'button'+ props.className;
 
   return (
-    <button type={props.type || 'button'} onClick={props.onClick} className={`${styles.button} ${props.className}`}>
+    <button type={props.type || 'button'} onClick={props.onClick} className={styles.button}>
       {props.children}
     </button>
   )

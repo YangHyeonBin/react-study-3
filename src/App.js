@@ -3,15 +3,13 @@ import React, { useState } from 'react';
 import UserInput from './components/Users/UserInput';
 import UserList from './components/Users/UserList';
 
-import styles from './App.module.css';
-
 function App() {
   const [users, setUsers] = useState([]);
 
   const addUserHandler = (enteredUserInfo) => {
     setUsers((prevUsers) => {
       const updatedUsers = [...prevUsers]
-      updatedUsers.unshift({
+      updatedUsers.push({
         userName: enteredUserInfo.userName,
         userAge: enteredUserInfo.userAge,
         id: Math.random().toString()
@@ -28,10 +26,11 @@ function App() {
 
   return (
     <div>
-      <section className={styles.userForm}>
-        <UserInput onAddUser={addUserHandler} />
-      </section>
-      <section className={`${styles.users} ${content ? styles.show : ''}`}>{content}</section>
+      {/* <section className={styles.userForm}> */}
+      <UserInput onAddUser={addUserHandler} />
+      {/* </section> */}
+      {/* <section className={`${styles.users} ${content ? styles.show : ''}`}>{content}</section> */}
+      <div>{content}</div>
     </div>
   );
 };
