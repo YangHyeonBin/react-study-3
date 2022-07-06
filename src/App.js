@@ -6,12 +6,12 @@ import UserList from './components/Users/UserList';
 function App() {
   const [users, setUsers] = useState([]);
 
-  const addUserHandler = (enteredUserInfo) => {
+  const addUserHandler = (uName, uAge) => {
     setUsers((prevUsers) => {
       const updatedUsers = [...prevUsers]
       updatedUsers.push({
-        userName: enteredUserInfo.userName,
-        userAge: enteredUserInfo.userAge,
+        userName: uName,
+        userAge: uAge,
         id: Math.random().toString()
       });
       return updatedUsers;
@@ -25,13 +25,13 @@ function App() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       {/* <section className={styles.userForm}> */}
       <UserInput onAddUser={addUserHandler} />
       {/* </section> */}
       {/* <section className={`${styles.users} ${content ? styles.show : ''}`}>{content}</section> */}
       <div>{content}</div>
-    </div>
+    </React.Fragment>
   );
 };
 
